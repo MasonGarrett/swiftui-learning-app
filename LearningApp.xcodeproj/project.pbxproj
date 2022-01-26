@@ -11,6 +11,7 @@
 		4352911B27A079A400244C27 /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352911A27A079A400244C27 /* ContentDetailView.swift */; };
 		4352911E27A07C5B00244C27 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4352911D27A07C5B00244C27 /* AVKit.framework */; };
 		4352912027A07D8300244C27 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352911F27A07D8300244C27 /* Constants.swift */; };
+		4352912227A1F8CE00244C27 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352912127A1F8CE00244C27 /* CodeTextView.swift */; };
 		43BA1D4327A04174008F4545 /* LearningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BA1D4227A04174008F4545 /* LearningApp.swift */; };
 		43BA1D4527A04174008F4545 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BA1D4427A04174008F4545 /* HomeView.swift */; };
 		43BA1D4727A04176008F4545 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43BA1D4627A04176008F4545 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		4352911A27A079A400244C27 /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
 		4352911D27A07C5B00244C27 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		4352911F27A07D8300244C27 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4352912127A1F8CE00244C27 /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
 		43BA1D3F27A04174008F4545 /* LearningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43BA1D4227A04174008F4545 /* LearningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningApp.swift; sourceTree = "<group>"; };
 		43BA1D4427A04174008F4545 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				43BA1D6027A06B36008F4545 /* ContentView.swift */,
 				4352911827A0777200244C27 /* ContentViewRow.swift */,
 				4352911A27A079A400244C27 /* ContentDetailView.swift */,
+				4352912127A1F8CE00244C27 /* CodeTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				4352911B27A079A400244C27 /* ContentDetailView.swift in Sources */,
 				43BA1D4327A04174008F4545 /* LearningApp.swift in Sources */,
 				4352911927A0777200244C27 /* ContentViewRow.swift in Sources */,
+				4352912227A1F8CE00244C27 /* CodeTextView.swift in Sources */,
 				43BA1D5727A04283008F4545 /* ContentModel.swift in Sources */,
 				43BA1D5D27A046E2008F4545 /* Models.swift in Sources */,
 				4352912027A07D8300244C27 /* Constants.swift in Sources */,
