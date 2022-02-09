@@ -14,6 +14,7 @@
 		4352912227A1F8CE00244C27 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352912127A1F8CE00244C27 /* CodeTextView.swift */; };
 		4352912427A3D38900244C27 /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352912327A3D38900244C27 /* RectangleCard.swift */; };
 		4352912627A3D5A900244C27 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352912527A3D5A900244C27 /* TestView.swift */; };
+		43686F7E27B42D48002F11A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43686F7D27B42D48002F11A8 /* GoogleService-Info.plist */; };
 		43BA1D4327A04174008F4545 /* LearningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BA1D4227A04174008F4545 /* LearningApp.swift */; };
 		43BA1D4527A04174008F4545 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BA1D4427A04174008F4545 /* HomeView.swift */; };
 		43BA1D4727A04176008F4545 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43BA1D4627A04176008F4545 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		4352912127A1F8CE00244C27 /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
 		4352912327A3D38900244C27 /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
 		4352912527A3D5A900244C27 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		43686F7D27B42D48002F11A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		43BA1D3F27A04174008F4545 /* LearningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43BA1D4227A04174008F4545 /* LearningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningApp.swift; sourceTree = "<group>"; };
 		43BA1D4427A04174008F4545 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				43BA1D5427A0422B008F4545 /* Resources */,
 				43BA1D5527A04234008F4545 /* Helpers */,
 				43BA1D4627A04176008F4545 /* Assets.xcassets */,
+				43686F7D27B42D48002F11A8 /* GoogleService-Info.plist */,
 				43BA1D4827A04176008F4545 /* Preview Content */,
 			);
 			path = LearningApp;
@@ -218,6 +221,7 @@
 			files = (
 				43BA1D4A27A04176008F4545 /* Preview Assets.xcassets in Resources */,
 				43BA1D5A27A044D9008F4545 /* data.json in Resources */,
+				43686F7E27B42D48002F11A8 /* GoogleService-Info.plist in Resources */,
 				43BA1D5B27A044D9008F4545 /* style.html in Resources */,
 				43BA1D4727A04176008F4545 /* Assets.xcassets in Resources */,
 			);
