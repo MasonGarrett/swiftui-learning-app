@@ -44,6 +44,7 @@ struct LaunchView: View {
             }
             .onAppear {
                 self.model.getDatabaseData()
+                UITabBar.appearance().backgroundColor = UIColor(red: 248/255, green: 247/255, blue: 248/255, alpha: 100)
             }
             .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
                 

@@ -10,6 +10,16 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var model: ContentModel
+    let user = UserService.shared.user
+    
+    var navTitle: String {
+        
+        if user.lastLesson != nil || user.lastQuestion != nil {
+            return "Welcome Back"
+        } else {
+            return "Get Started"
+        }
+    }
     
     var body: some View {
         
@@ -17,8 +27,15 @@ struct HomeView: View {
             
             VStack (alignment: .leading) {
                 
-                Text("What do you want to do today?")
-                    .padding(.leading, 20)
+                if user.lastLesson != nil && user.lastLesson! > 0 || user.lastQuestion != nil && user.lastQuestion! > 0{
+                    
+                    // Show resume view
+                    ResumeView()
+                        .padding(.horizontal)
+                } else {
+                    Text("What do you want to do today?")
+                        .padding(.leading, 20)
+                }
                 
                 ScrollView {
                     
@@ -65,7 +82,7 @@ struct HomeView: View {
                     .padding()
                 }
             }
-            .navigationTitle("Get Started")
+            .navigationTitle(navTitle)
             .onChange(of: model.currentContentSelected) { changedValue in
                 if changedValue == nil {
                     model.currentModule = nil

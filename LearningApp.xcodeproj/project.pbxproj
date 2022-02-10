@@ -30,6 +30,7 @@
 		43E363C327B594D5009E5803 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363C227B594D5009E5803 /* ProfileView.swift */; };
 		43E363C527B594F8009E5803 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363C427B594F8009E5803 /* LaunchView.swift */; };
 		43E363C727B5A488009E5803 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363C627B5A488009E5803 /* UserService.swift */; };
+		43E363C927B5B679009E5803 /* ResumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363C827B5B679009E5803 /* ResumeView.swift */; };
 		5EFC9BE22543070D2550A603 /* Pods_LearningApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A70EB9E85EA7DF43C5715598 /* Pods_LearningApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		43E363C227B594D5009E5803 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		43E363C427B594F8009E5803 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		43E363C627B5A488009E5803 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		43E363C827B5B679009E5803 /* ResumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeView.swift; sourceTree = "<group>"; };
 		A70EB9E85EA7DF43C5715598 /* Pods_LearningApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LearningApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8C8BB5D26462A29656ACC3E /* Pods-LearningApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningApp.debug.xcconfig"; path = "Target Support Files/Pods-LearningApp/Pods-LearningApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +181,7 @@
 			children = (
 				43BA1D4427A04174008F4545 /* HomeView.swift */,
 				43BA1D5E27A0547F008F4545 /* HomeViewRow.swift */,
+				43E363C827B5B679009E5803 /* ResumeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				43BA1D4327A04174008F4545 /* LearningApp.swift in Sources */,
 				43E363C327B594D5009E5803 /* ProfileView.swift in Sources */,
 				4352911927A0777200244C27 /* ContentViewRow.swift in Sources */,
+				43E363C927B5B679009E5803 /* ResumeView.swift in Sources */,
 				43E363BF27B59465009E5803 /* LoginView.swift in Sources */,
 				4352912227A1F8CE00244C27 /* CodeTextView.swift in Sources */,
 				43BA1D5727A04283008F4545 /* ContentModel.swift in Sources */,
