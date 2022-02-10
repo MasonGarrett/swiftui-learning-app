@@ -60,6 +60,29 @@ class ContentModel: ObservableObject {
     
     // MARK: Data Methods
     
+    func saveData(writeToDatabase:Bool = false) {
+        
+        if let loggedInUser = Auth.auth().currentUser {
+            
+            // Save the progress data locally
+            let user = UserService.shared.user
+            
+            user.lastModule = currentModuleIndex
+            user.lastLesson = currentLessonIndex
+            user.lastQuestion = currentQuestionIndex
+            
+            if writeToDatabase {
+                // Save it to the database
+                let db = Firestore.firestore()
+                let ref = db.collection("users").document(loggedInUser.uid)
+                
+                ref.setData(["lastModule":user.lastModule ?? NSNull(),
+                             "lastLesson":user.lastLesson ?? NSNull(),
+                             "lastQuestion":user.lastQuestion ?? NSNull()], merge: true)
+            }
+        }
+    }
+    
     func getUserData() {
         
         // Check that there's a logged in user
@@ -100,7 +123,7 @@ class ContentModel: ObservableObject {
         collection.getDocuments { snapshot, error in
             
             if error == nil && snapshot != nil {
-                                
+                
                 // Create an array for the modules
                 var modules = [Module]()
                 
@@ -239,24 +262,24 @@ class ContentModel: ObservableObject {
     func getLocalData() {
         /*
          
-        // Get a url to the .json file
-        let jsonUrl = Bundle.main.url(forResource: "data", withExtension: "json")
-        
-        do {
-            // Read the file into the data object
-            let jsonData = try Data(contentsOf: jsonUrl!)
-            
-            // Try to decode the json into an array of modules
-            let jsonDecoder = JSONDecoder()
-            let modules = try jsonDecoder.decode([Module].self, from: jsonData)
-            
-            // Assign parsed modules to modules property
-            self.modules = modules
-            
-        } catch {
-            // Log error
-            print("Couldn't parse local data")
-        }
+         // Get a url to the .json file
+         let jsonUrl = Bundle.main.url(forResource: "data", withExtension: "json")
+         
+         do {
+         // Read the file into the data object
+         let jsonData = try Data(contentsOf: jsonUrl!)
+         
+         // Try to decode the json into an array of modules
+         let jsonDecoder = JSONDecoder()
+         let modules = try jsonDecoder.decode([Module].self, from: jsonData)
+         
+         // Assign parsed modules to modules property
+         self.modules = modules
+         
+         } catch {
+         // Log error
+         print("Couldn't parse local data")
+         }
          
          */
         
@@ -300,7 +323,7 @@ class ContentModel: ObservableObject {
                 // There was an error
                 return
             }
-
+            
             do {
                 // Create json decoder
                 let decoder = JSONDecoder()
@@ -371,6 +394,9 @@ class ContentModel: ObservableObject {
             currentLessonIndex = 0
             currentLesson = nil
         }
+        
+        // Save the progress
+        saveData()
     }
     
     func hasNextLesson() -> Bool {
@@ -416,6 +442,9 @@ class ContentModel: ObservableObject {
             currentQuestionIndex = 0
             currentQuestion = nil
         }
+        
+        // Save data
+        saveData()
     }
     
     // MARK: Code Styling
