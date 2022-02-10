@@ -17,7 +17,7 @@ struct ContentViewRow: View {
         if model.currentModule != nil && index < model.currentModule!.content.lessons.count {
             return model.currentModule!.content.lessons[index]
         } else {
-            return Lesson(id: 0, title: "Loading", video: "", duration: "", explanation: "")
+            return Lesson(id: "", title: "Loading", video: "", duration: "", explanation: "")
         }
     }
     
