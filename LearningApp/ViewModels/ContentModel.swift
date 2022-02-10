@@ -51,14 +51,99 @@ class ContentModel: ObservableObject {
         
         // Check if there's a current user to determine logged in status
         loggedIn = Auth.auth().currentUser != nil ? true : false
+        
+        // Check if user meta data has been fetched. If the user was already logged in from a previous session, we need to get their data in a seperate call
+        if UserService.shared.user.name == "" {
+            getUserData()
+        }
     }
     
     // MARK: Data Methods
     
-    func getLessons(module: Module, completion: @escaping () -> Void) {
+    func getUserData() {
+        
+        // Check that there's a logged in user
+        guard Auth.auth().currentUser != nil else {
+            return
+        }
+        
+        // Get the meta data for that user
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(Auth.auth().currentUser!.uid)
+        
+        ref.getDocument { snapshot, error in
+            
+            // Check there's no errors
+            guard error == nil && snapshot != nil else {
+                return
+            }
+            
+            // Parse the data out and set the user meta data
+            let data = snapshot!.data()
+            let user = UserService.shared.user
+            user.name = data?["name"] as? String ?? ""
+            user.lastModule = data?["lastModule"] as? Int
+            user.lastLesson = data?["lastLesson"] as? Int
+            user.lastQuestion = data?["lastQuestion"] as? Int
+        }
+    }
+    
+    func getDatabaseData() {
         
         // Parse local included json data
         getLocalData()
+        
+        // Specify path
+        let collection = db.collection("modules")
+        
+        // Get documents
+        collection.getDocuments { snapshot, error in
+            
+            if error == nil && snapshot != nil {
+                                
+                // Create an array for the modules
+                var modules = [Module]()
+                
+                // Loop through the documents returned
+                for doc in snapshot!.documents {
+                    
+                    // Create a new module instance
+                    var m = Module()
+                    
+                    // Parse out the values from the document into the module instance
+                    m.id = doc["id"] as? String ?? UUID().uuidString
+                    m.category = doc["category"] as? String ?? ""
+                    
+                    // Parse the lesson content
+                    let contentMap = doc["content"] as! [String:Any]
+                    
+                    m.content.id = contentMap["id"] as? String ?? ""
+                    m.content.description = contentMap["description"] as? String ?? ""
+                    m.content.image = contentMap["image"] as? String ?? ""
+                    m.content.time = contentMap["time"] as? String ?? ""
+                    
+                    // Parse the test content
+                    let testMap = doc["test"] as! [String:Any]
+                    
+                    m.test.id = testMap["id"] as? String ?? ""
+                    m.test.description = testMap["description"] as? String ?? ""
+                    m.test.image = testMap["image"] as? String ?? ""
+                    m.test.time = testMap["time"] as? String ?? ""
+                    
+                    // Add it to our array
+                    modules.append(m)
+                }
+                
+                // Assign our modules to the published property
+                DispatchQueue.main.async {
+                    
+                    self.modules = modules
+                }
+            }
+        }
+    }
+    
+    func getLessons(module: Module, completion: @escaping () -> Void) {
         
         // Specify path
         let collection = db.collection("modules").document(module.id).collection("lessons")
@@ -146,58 +231,6 @@ class ContentModel: ObservableObject {
                         // Call the completion closure
                         completion()
                     }
-                }
-            }
-        }
-    }
-    
-    func getModules() {
-        
-        // Specify path
-        let collection = db.collection("modules")
-        
-        // Get documents
-        collection.getDocuments { snapshot, error in
-            
-            if error == nil && snapshot != nil {
-                                
-                // Create an array for the modules
-                var modules = [Module]()
-                
-                // Loop through the documents returned
-                for doc in snapshot!.documents {
-                    
-                    // Create a new module instance
-                    var m = Module()
-                    
-                    // Parse out the values from the document into the module instance
-                    m.id = doc["id"] as? String ?? UUID().uuidString
-                    m.category = doc["category"] as? String ?? ""
-                    
-                    // Parse the lesson content
-                    let contentMap = doc["content"] as! [String:Any]
-                    
-                    m.content.id = contentMap["id"] as? String ?? ""
-                    m.content.description = contentMap["description"] as? String ?? ""
-                    m.content.image = contentMap["image"] as? String ?? ""
-                    m.content.time = contentMap["time"] as? String ?? ""
-                    
-                    // Parse the test content
-                    let testMap = doc["test"] as! [String:Any]
-                    
-                    m.test.id = testMap["id"] as? String ?? ""
-                    m.test.description = testMap["description"] as? String ?? ""
-                    m.test.image = testMap["image"] as? String ?? ""
-                    m.test.time = testMap["time"] as? String ?? ""
-                    
-                    // Add it to our array
-                    modules.append(m)
-                }
-                
-                // Assign our modules to the published property
-                DispatchQueue.main.async {
-                    
-                    self.modules = modules
                 }
             }
         }
